@@ -17,10 +17,10 @@ public class Game {
 
     public int gameStart() {
         System.out.println("Podemos continuar?");
-        int result = utils.validadeInpt(utils.setOpt(new String[]{"Sim", "Não"}), 2);
+        int result = utils.validadeInput(utils.setOpt(new String[]{"Sim", "Não"}), 2);
         while (result != 1) {
             System.out.println("Ok! Me avise quando pudermos continuar...");
-            result = utils.validadeInpt(utils.setOpt(new String[]{"Podemos continuar...", "Aguarde mais um pouco..."}), 2);
+            result = utils.validadeInput(utils.setOpt(new String[]{"Podemos continuar...", "Aguarde mais um pouco..."}), 2);
         }
         System.out.println(separator);
         System.out.println("Então vamos começar. Boa sorte, Princesa Beca!");
@@ -35,7 +35,7 @@ public class Game {
     }
 
     public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
+        this.totalScore = Math.max(totalScore, 0);
     }
 
     public void congrats() {
@@ -53,28 +53,40 @@ public class Game {
     }
 
     public void finish(int questionAmount) {
+        final int delay1 = 1, delay2 = 3;
+
         System.out.println(separator);
+
         if (totalScore > (questionAmount * .7)) {
-            System.out.println("PARABÉNS, Princesa Beca!!!");
-            utils.wait(1);
-            System.out.println(String.format("\nAo terminar todas estas %d perguntas, Você atingiu um total de %d pontos!",
-                    questionAmount, totalScore));
-            utils.wait(2);
-            System.out.println("E com toda essa pontuação, seu Principe gostaria que Você visualizasse");
-            System.out.println("o video que irei abrir para Você daqui a uns segundinhos...");
-            utils.wait(1);
-            System.out.println("(aperte o \"Play\".)");
-            utils.wait(4);
-            try {
-                Desktop desktop = java.awt.Desktop.getDesktop();
-                URI uri = new URI("https://drive.google.com/file/d/1ThDA9ty9ksvhLsKZ-M1boEhU_z0yGUBP/view?usp=sharing");
-                desktop.browse(uri);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            utils.slowPrint("PARABÉNS, Princesa Beca!!!", delay1);
+            utils.slowPrint(String.format("\nAo terminar todas estas %d perguntas, Você atingiu um total de %d pontos!",
+                    questionAmount, totalScore), delay2);
+
+            utils.slowPrint("\nE com toda essa pontuação, seu Príncipe gostaria que Você visualizasse", delay2);
+
         } else {
-            //TODO: the "bad path"...
+            utils.slowPrint("QUE PENA, Princesa Beca!!!", delay1);
+            utils.slowPrint(String.format("\nInfelizmente, ao terminar todas estas %d perguntas, Você atingiu um total de " +
+                    "apenas %d pontos!", questionAmount, totalScore), delay2);
+            utils.slowPrint("\nMas, dizem por aí que quem procura perfeição nas pessoas, vive frustrado(a), neh?", delay2);
+            utils.slowPrint("\nE mesmo com essa pontuação, seu Príncipe gostaria que Você visualizasse", delay2);
         }
+
+        openFinalVideo();
         System.out.println(separator);
+    }
+
+    private void openFinalVideo() {
+        utils.slowPrint("o video que irei abrir para Você daqui a uns segundinhos...", 1);
+        utils.slowPrint("(aperte o \"Play\".)", 8);
+
+        try {
+            final Desktop desktop = java.awt.Desktop.getDesktop();
+            final URI uri = new URI("https://drive.google.com/file/d/1ThDA9ty9ksvhLsKZ-M1boEhU_z0yGUBP/view?usp=sharing");
+
+            desktop.browse(uri);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

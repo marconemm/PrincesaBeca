@@ -2,7 +2,6 @@ package princesa.beca.utils;
 
 import princesa.beca.models.Question;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Utils {
@@ -32,7 +31,7 @@ public class Utils {
         try {
             int result = Integer.parseInt(scanner.nextLine());
 
-            if (result > new DataBase().getMaxQuestions() || result < 4)
+            if (result > new DataBase().getMaxQuestions() || result < 1)
                 throw new NumberFormatException();
 
             return result;
@@ -42,7 +41,7 @@ public class Utils {
         }
     }
 
-    public int validadeInpt(int opt, int edge) {
+    public int validadeInput(int opt, int edge) {
         if (opt < edge)
             return opt;
 
@@ -57,9 +56,7 @@ public class Utils {
         }
     }
 
-    public boolean showNextQuestion(List<Question> questionList) {
-        final Question q = questionList.get(0);
-
+    public boolean showNextQuestion(Question q) {
         printQuestion(q.getQuestion());
         final int opt = setOpt(q.getAnswers().toArray(new String[4]));
 
