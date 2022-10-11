@@ -58,13 +58,21 @@ public class DataBase {
         q.setCorrectAnswer(4);
         questionList.add(q);
 
-        //7:
         q = new Question("Quais os dois principais pilares da tua relação com seu príncipe?");
         q.addAnswer("Glúten e 5% de álcool");
         q.addAnswer("Confiança e liberdade");
         q.addAnswer("Xêros no cangote e nas bochechas");
         q.addAnswer("Ligações diárias e cobranças intensivas");
         q.setCorrectAnswer(2);
+        questionList.add(q);
+
+        //8:
+        q = new Question("Qual o melhor apelido?");
+        q.addAnswer("Minha Beca");
+        q.addAnswer("Minha");
+        q.addAnswer("As duas opções acima");
+        q.addAnswer("Fiona do Shrek");
+        q.setCorrectAnswer(3);
         questionList.add(q);
 
         //TROLL:
