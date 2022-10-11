@@ -12,7 +12,7 @@ public class Utils {
         this.scanner = new Scanner(System.in);
     }
 
-    public int setOpt(String[] optList) {
+    public int setQuestionsAmount(String[] optList) {
         try {
             printOpts(optList);
             int result = Integer.parseInt(scanner.nextLine());
@@ -23,11 +23,11 @@ public class Utils {
             return result;
         } catch (NumberFormatException nfe) {
             System.out.println("Opção inválida. Por favor, informe uma opção válida.");
-            return setOpt(optList);
+            return setQuestionsAmount(optList);
         }
     }
 
-    public int setOpt() {
+    public int setQuestionsAmount() {
         try {
             int result = Integer.parseInt(scanner.nextLine());
 
@@ -37,7 +37,7 @@ public class Utils {
             return result;
         } catch (NumberFormatException nfe) {
             System.out.println("Opção inválida. Por favor, informe uma opção válida.");
-            return setOpt();
+            return setQuestionsAmount();
         }
     }
 
@@ -58,7 +58,7 @@ public class Utils {
 
     public boolean showNextQuestion(Question q) {
         printQuestion(q.getQuestion());
-        final int opt = setOpt(q.getAnswers().toArray(new String[4]));
+        final int opt = setQuestionsAmount(q.getAnswers().toArray(new String[4]));
 
         return q.isCorrect(opt);
     }

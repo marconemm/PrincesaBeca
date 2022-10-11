@@ -17,10 +17,10 @@ public class Game {
 
     public int gameStart() {
         System.out.println("Podemos continuar?");
-        int result = utils.validadeInput(utils.setOpt(new String[]{"Sim", "Não"}), 2);
+        int result = utils.validadeInput(utils.setQuestionsAmount(new String[]{"Sim", "Não"}), 2);
         while (result != 1) {
             System.out.println("Ok! Me avise quando pudermos continuar...");
-            result = utils.validadeInput(utils.setOpt(new String[]{"Podemos continuar...", "Aguarde mais um pouco..."}), 2);
+            result = utils.validadeInput(utils.setQuestionsAmount(new String[]{"Podemos continuar...", "Aguarde mais um pouco..."}), 2);
         }
         System.out.println(separator);
         System.out.println("Então vamos começar. Boa sorte, Princesa Beca!");
@@ -54,10 +54,9 @@ public class Game {
 
     public void finish(int questionAmount) {
         final int delay1 = 1, delay2 = 3;
-
         System.out.println(separator);
 
-        if (totalScore > (questionAmount * .7)) {
+        if (totalScore > ((questionAmount * .7) * new Question("").getScore())) {
             utils.slowPrint("PARABÉNS, Princesa Beca!!!", delay1);
             utils.slowPrint(String.format("\nAo terminar todas estas %d perguntas, Você atingiu um total de %d pontos!",
                     questionAmount, totalScore), delay2);

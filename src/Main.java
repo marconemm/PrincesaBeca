@@ -15,7 +15,7 @@ public class Main {
 
         while (opt >= 0) {
             System.out.println("\n\nOlá!, Princesa Beca! =)\nVamos jogar um pouco?");
-            opt = utils.validadeInput(utils.setOpt(new String[]{"Sim", "Não"}), 2);
+            opt = utils.validadeInput(utils.setQuestionsAmount(new String[]{"Sim", "Não"}), 2);
 
             if (opt < 0)
                 System.out.println("Que pena que Você não aceitou. =(\nAté uma próxima!");
@@ -27,15 +27,15 @@ public class Main {
                 utils.slowPrint("Ao responde-las corretamente, acumularás pontos. =)", 1);
                 utils.slowPrint("Se errar, os perderá. =(", 2);
                 utils.slowPrint("\nSendo assim, me diga um número de perguntas que desejas responder:", 1);
-                opt = utils.setOpt();
+                opt = utils.setQuestionsAmount();
                 utils.slowPrint(String.format("\nÓtimo! Então deixe-me escolher suas %d perguntas...", opt), 2);
+
+                final List<Question> selectedQuestionsList = db.getRandomQuestions(opt);
                 utils.slowPrint("Pronto!", 1);
                 utils.slowPrint("Há! Saiba que suas respostas influenciarão no fim do jogo.", 1);
                 utils.slowPrint("Logo, pense bem antes de cada resposta...\n", 1);
 
                 if (game.gameStart() == 1) {
-                    final List<Question> selectedQuestionsList = db.getRandomQuestions(opt);
-
                     for (int i = 0; i < selectedQuestionsList.size(); i++) {
                         System.out.println(String.format("\nPergunta %d:", i + 1));
 
@@ -52,7 +52,7 @@ public class Main {
                         }
                     }
 
-                    game.finish(2);
+                    game.finish(opt);
                     opt = -1; //Finish the game.
                 }
             }

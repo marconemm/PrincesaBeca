@@ -26,14 +26,6 @@ public class DataBase {
         q.setCorrectAnswer(1);
         questionList.add(q);
 
-        q = new Question("Em que dia Você deu de cara com seu Príncipe pela primeira vez?");
-        q.addAnswer("18/08/2022");
-        q.addAnswer("18/09/2022");
-        q.addAnswer("18/10/2022");
-        q.addAnswer("22/08/2022");
-        q.setCorrectAnswer(2);
-        questionList.add(q);
-
         q = new Question("Princesa Beca, com quantos beijos seu Príncipe costuma se despedir de Você?");
         q.addAnswer("Incontáveis...");
         q.addAnswer("10");
@@ -58,12 +50,37 @@ public class DataBase {
         q.setCorrectAnswer(3);
         questionList.add(q);
 
+        q = new Question("Qual o fator mais importante para nosso seu relacionamento com seu príncipe, Beca?");
+        q.addAnswer("As 24h do dia a dia");
+        q.addAnswer("O sentido de rotação da Terra");
+        q.addAnswer("A opinião de qualquer pessoas sobre vocês dois");
+        q.addAnswer("A aprovação do seu príncipe por parte dos seus pais");
+        q.setCorrectAnswer(4);
+        questionList.add(q);
+
+        //7:
+        q = new Question("Quais os dois principais pilares da tua relação com seu príncipe?");
+        q.addAnswer("Glúten e 5% de álcool");
+        q.addAnswer("Confiança e liberdade");
+        q.addAnswer("Xêros no cangote e nas bochechas");
+        q.addAnswer("Ligações diárias e cobranças intensivas");
+        q.setCorrectAnswer(2);
+        questionList.add(q);
+
         //TROLL:
         q = new Question("Qual o log10 de 137?");
-        q.addAnswer("2.1367205671564");
-        q.addAnswer("4.2267205671564");
-        q.addAnswer("3.2367205671564");
-        q.addAnswer("2.2367205671564");
+        q.addAnswer("2.14");
+        q.addAnswer("4.23");
+        q.addAnswer("3.24");
+        q.addAnswer("2.24");
+        q.setCorrectAnswer(1);
+        questionList.add(q);
+
+        q = new Question("Qual a raiz cúbica de 365?");
+        q.addAnswer("7.15");
+        q.addAnswer("10.25");
+        q.addAnswer("3.75");
+        q.addAnswer("9.28");
         q.setCorrectAnswer(1);
         questionList.add(q);
     }
