@@ -54,9 +54,11 @@ public class Game {
 
     public void finish(int questionAmount) {
         final int delay1 = 1, delay2 = 3;
+        final int minScore = (int) ((questionAmount * .7) * new Question("").getScore());
+
         System.out.println(separator);
 
-        if (totalScore > ((questionAmount * .7) * new Question("").getScore())) {
+        if (totalScore >= minScore) {
             utils.slowPrint("PARABÉNS, Princesa Beca!!!", delay1);
             utils.slowPrint(String.format("\nAo terminar todas estas %d perguntas, Você atingiu um total de %d pontos!",
                     questionAmount, totalScore), delay2);
@@ -65,8 +67,8 @@ public class Game {
 
         } else {
             utils.slowPrint("QUE PENA, Princesa Beca!!!", delay1);
-            utils.slowPrint(String.format("\nInfelizmente, ao terminar todas estas %d perguntas, Você atingiu um total de " +
-                    "apenas %d pontos!", questionAmount, totalScore), delay2);
+            utils.slowPrint(String.format("\nInfelizmente, ao terminar todas estas %d perguntas, Você atingiu apenas %d pontos!",
+                    questionAmount, totalScore), delay2);
             utils.slowPrint("\nMas, dizem por aí que quem procura perfeição nas pessoas, vive frustrado(a), neh?", delay2);
             utils.slowPrint("\nE mesmo com essa pontuação, seu Príncipe gostaria que Você visualizasse", delay2);
         }
